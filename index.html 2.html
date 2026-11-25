@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="mr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#174b3b">
+<title>पुजा वाचनालय | मराठी पुस्तकं घरपोच</title>
+<style>
+*{box-sizing:border-box} body{margin:0;background:#f5f3ed;color:#202820;font-family:system-ui,-apple-system,"Noto Sans Devanagari",sans-serif}
+header{background:#174b3b;color:white;padding:28px 16px;text-align:center}
+header h1{margin:0 0 6px;font-size:30px} header p{margin:0;color:#e4eee7}
+main{max-width:980px;margin:22px auto;padding:0 14px}
+.controls{display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:18px}
+input,select{width:100%;padding:13px 14px;border:1px solid #c9d2cb;border-radius:10px;background:white;font-size:16px}
+.count{font-size:14px;color:#53645a;margin:8px 2px 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:14px}
+.card{background:white;border:1px solid #e1e5df;border-radius:14px;overflow:hidden;box-shadow:0 2px 8px #1b35200d}
+.card img{width:100%;height:210px;object-fit:contain;background:#eceae4;display:block}
+.info{padding:11px} .info h2{font-size:17px;margin:0 0 6px;line-height:1.4} .author{font-size:13px;color:#56645b;margin:0 0 9px}
+.tag{display:inline-block;background:#e8f0eb;color:#24513c;padding:4px 8px;border-radius:20px;font-size:11px}
+footer{margin-top:25px;background:#174b3b;color:white;text-align:center;padding:22px 14px}
+footer p{margin:5px 0;color:#e4eee7;font-size:14px}
+.contact{display:inline-block;margin-top:10px;background:#fff;color:#174b3b;text-decoration:none;font-weight:700;padding:11px 16px;border-radius:9px}
+.phone-number{font-size:18px!important;font-weight:600;letter-spacing:0.5px;margin-top:12px!important}
+.note{font-size:12px;color:#68766d;text-align:center;margin:14px 0 24px}
+@media(min-width:650px){.controls{grid-template-columns:2fr 1fr} .card img{height:245px}}
+</style>
+</head>
+<body>
+<header><h1>📚 पुजा वाचनालय</h1><p>मराठी पुस्तकं घरपोच • छत्रपती संभाजीनगर</p></header>
+<main>
+ <div class="controls">
+  <input id="search" type="search" placeholder="पुस्तकाचे नाव किंवा लेखक शोधा..." aria-label="पुस्तक शोधा">
+  <select id="category" aria-label="कॅटेगरी निवडा"><option value="">सर्व प्रकार</option></select>
+ </div>
+ <div class="count" id="count" aria-live="polite"></div>
+ <section class="grid" id="books"></section>
+ <p class="note">ही पहिली चाचणी यादी आहे. कॅटेगरी प्राथमिक स्वरूपात दिल्या आहेत.</p>
+</main>
+<footer><strong>पुस्तक हवे आहे?</strong><p>पुस्तकाबद्दल चौकशी करण्यासाठी WhatsApp वर संपर्क करा.</p><p class="phone-number">संपर्क क्रमांक: <strong>9975136835</strong></p>
+<a class="contact" href="https://wa.me/919975136835?text=%E0%A4%A8%E0%A4%AE%E0%A4%B8%E0%A5%8D%E0%A4%95%E0%A4%BE%E0%A4%B0%2C%20%E0%A4%AE%E0%A4%B2%E0%A4%BE%20%E0%A4%AA%E0%A5%81%E0%A4%B8%E0%A5%8D%E0%A4%A4%E0%A4%95%E0%A4%BE%E0%A4%AC%E0%A4%A6%E0%A5%8D%E0%A4%A6%E0%A4%B2%20%E0%A4%AE%E0%A4%BE%E0%A4%B9%E0%A4%BF%E0%A4%A4%E0%A5%80%20%E0%A4%B9%E0%A4%B5%E0%A5%80%20%E0%A4%86%E0%A4%B9%E0%A5%87." target="_blank" rel="noopener">WhatsApp वर संपर्क करा</a>
+<p>पुजा वाचनालय • छत्रपती संभाजीनगर</p></footer>
+<script>
+const books=[{"name": "रागो भरारी", "author": "कॅप्टन वासुदेव बेलवलकर", "cat": "ऐतिहासिक / साहसी", "img": "rago-bharari.jpg"}, {"name": "यूज ऑफ फोर्स", "author": "ब्रॅड थॉर", "cat": "थ्रिलर / अ‍ॅक्शन", "img": "use-of-force.jpg"}, {"name": "गुलमोहर", "author": "व. पु. काळे", "cat": "कथा / साहित्य", "img": "gulmohar.jpg"}, {"name": "चुंबन", "author": "तस्लीमा नसरीन", "cat": "कादंबरी", "img": "chumban.jpg"}, {"name": "सीता", "author": "अभिराम भडकमकर", "cat": "कादंबरी", "img": "sita.jpg"}, {"name": "फ्रीडम ऑन फायर", "author": "लक्ष्मीकांत देशमुख", "cat": "युद्ध / सामाजिक विषय", "img": "freedom-on-fire.jpg"}, {"name": "विजय", "author": "भा. द. खेर", "cat": "कादंबरी", "img": "vijay.jpg"}, {"name": "आकू", "author": "डॉ. विजया वाड", "cat": "कादंबरी", "img": "aaku.jpg"}, {"name": "माणूस अशी आणि तशीही", "author": "रवींद्र भगवते", "cat": "कथा / साहित्य", "img": "manus-ashi-tashi.jpg"}, {"name": "लज्जा", "author": "तस्लीमा नसरीन", "cat": "सामाजिक कादंबरी", "img": "lajja.jpg"}];
+const categories=[...new Set(books.map(b=>b.cat))];
+const select=document.getElementById('category');
+categories.forEach(c=>{const o=document.createElement('option');o.value=c;o.textContent=c;select.appendChild(o)});
+function render(){
+ const q=document.getElementById('search').value.trim().toLocaleLowerCase('mr');
+ const cat=select.value;
+ const filtered=books.filter(b=>(!cat||b.cat===cat)&&(!q||(b.name+' '+b.author).toLocaleLowerCase('mr').includes(q)));
+ document.getElementById('count').textContent='एकूण '+filtered.length+' पुस्तके';
+ const root=document.getElementById('books');root.replaceChildren();
+ filtered.forEach(b=>{
+  const article=document.createElement('article');article.className='card';
+  const img=document.createElement('img');img.src='images/'+b.img;img.alt=b.name+' पुस्तकाचे मुखपृष्ठ';img.loading='lazy';
+  const info=document.createElement('div');info.className='info';
+  const title=document.createElement('h2');title.textContent=b.name;
+  const author=document.createElement('p');author.className='author';author.textContent='लेखक: '+b.author;
+  const tag=document.createElement('span');tag.className='tag';tag.textContent=b.cat;
+  info.append(title,author,tag);article.append(img,info);root.append(article);
+ });
+ if(!filtered.length){const p=document.createElement('p');p.textContent='या नावाचे पुस्तक सापडले नाही.';root.append(p)}
+}
+document.getElementById('search').addEventListener('input',render);select.addEventListener('change',render);render();
+</script>
+</body></html>
